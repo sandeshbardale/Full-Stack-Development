@@ -1,0 +1,22 @@
+{
+  "name": "social-media-clone",
+  "version": "1.0.0",
+  "description": "A beautiful social media clone application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "social",
+    "media",
+    "clone",
+    "express"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.22.1"
+  },
+  "type": "commonjs"
+}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SocialHub - Share Your Moments</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">
+        <div class="logo-icon">📱</div>
+        <h1>SocialHub</h1>
+      </div>
+
+      <nav class="nav-menu">
+        <div class="nav-item active" data-nav="feed">
+          <span class="icon">🏠</span>
+          <span>Home</span>
+        </div>
+        <div class="nav-item" data-nav="explore">
+          <span class="icon">🔍</span>
+          <span>Explore</span>
+        </div>
+        <div class="nav-item" data-nav="notifications">
+          <span class="icon">🔔</span>
+          <span>Notifications</span>
+          <span class="badge">12</span>
+        </div>
+        <div class="nav-item" data-nav="messages">
+          <span class="icon">💬</span>
+          <span>Messages</span>
+        </div>
+        <div class="nav-item" data-nav="profile">
+          <span class="icon">👤</span>
+          <span>Profile</span>
+        </div>
+      </nav>
+
+      <button class="compose-btn">✨ Compose Post</button>
+
+      <div class="sidebar-footer">
+        <div class="user-mini">
+          <div class="avatar-mini">👤</div>
+          <div class="user-info-mini">
+            <div class="name-mini">Your Name</div>
+            <div class="handle-mini">@yourhandle</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="header">
+        <h2>Home Feed</h2>
+        <div class="header-icons">
+          <button class="icon-btn">⭐</button>
+          <button class="icon-btn">⚙️</button>
+        </div>
+      </div>
+
+      <div class="create-post">
+        <div class="create-post-header">
+          <div class="avatar-lg">👤</div>
+          <div class="create-input-wrapper">
+            <textarea id="postContent" class="create-input" placeholder="What's on your mind?"></textarea>
+            <div class="image-preview" id="imagePreview" style="display: none;">
+              <img id="previewImg" src="" alt="Preview">
+              <button class="remove-image-btn">×</button>
+            </div>
+          </div>
+        </div>
+        <div class="create-post-footer">
+          <div class="create-tools">
+            <button class="tool-btn" title="Add Image">🖼️</button>
+            <button class="tool-btn" title="Add Emoji">😊</button>
+            <button class="tool-btn" title="Add Poll">📊</button>
+            <button class="tool-btn" title="Add Location">📍</button>
+          </div>
+          <button id="postBtn" class="post-btn">Post</button>
+        </div>
+      </div>
+
+      <input type="file" id="imageInput" accept="image/*" style="display: none;">
+
+      <div id="feedContainer" class="feed-container">
+      </div>
+    </main>
+
+    <aside class="right-sidebar">
+      <div class="search-box">
+        <input type="text" placeholder="Search SocialHub...">
+        <span class="search-icon">🔍</span>
+      </div>
+
+      <div class="trending">
+        <h3>Trending Now</h3>
+        <div class="trending-item">
+          <div class="trending-tag">#WebDevelopment</div>
+          <div class="trending-count">125K posts</div>
+        </div>
+        <div class="trending-item">
+          <div class="trending-tag">#ReactJS</div>
+          <div class="trending-count">89K posts</div>
+        </div>
+        <div class="trending-item">
+          <div class="trending-tag">#DesignTrends</div>
+          <div class="trending-count">234K posts</div>
+        </div>
+        <div class="trending-item">
+          <div class="trending-tag">#FrontendDevelopment</div>
+          <div class="trending-count">156K posts</div>
+        </div>
+      </div>
+
+      <div class="suggestions">
+        <h3>Suggested For You</h3>
+        <div class="suggestion-card">
+          <div class="suggestion-header">
+            <div class="avatar-sm">👨‍💼</div>
+            <div class="suggestion-info">
+              <div class="suggestion-name">James Developer</div>
+              <div class="suggestion-handle">@jamesdev</div>
+            </div>
+          </div>
+          <button class="follow-btn">Follow</button>
+        </div>
+        <div class="suggestion-card">
+          <div class="suggestion-header">
+            <div class="avatar-sm">👩‍🎨</div>
+            <div class="suggestion-info">
+              <div class="suggestion-name">Design Queen</div>
+              <div class="suggestion-handle">@designqueen</div>
+            </div>
+          </div>
+          <button class="follow-btn">Follow</button>
+        </div>
+        <div class="suggestion-card">
+          <div class="suggestion-header">
+            <div class="avatar-sm">👨‍🚀</div>
+            <div class="suggestion-info">
+              <div class="suggestion-name">Tech Visionary</div>
+              <div class="suggestion-handle">@techviz</div>
+            </div>
+          </div>
+          <button class="follow-btn">Follow</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="modal" id="postModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Create Post</h2>
+        <button class="close-modal">×</button>
+      </div>
+      <div class="modal-body">
+        <textarea id="modalPostContent" class="modal-textarea" placeholder="What's on your mind?"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-cancel">Cancel</button>
+        <button id="modalPostBtn" class="modal-post">Post</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

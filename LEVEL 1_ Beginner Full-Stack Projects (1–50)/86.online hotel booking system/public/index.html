@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hotel Booking</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+<h1>Hotel Booking</h1>
+
+<div class="form">
+<input type="text" id="name" placeholder="Your Name">
+<input type="email" id="email" placeholder="Email">
+<input type="date" id="checkin">
+<input type="date" id="checkout">
+
+<select id="room">
+<option>Deluxe Room</option>
+<option>Suite Room</option>
+<option>Single Room</option>
+</select>
+
+<button onclick="book()">Book Now</button>
+</div>
+
+<div class="bookings">
+<h2>Bookings</h2>
+<ul id="list"></ul>
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

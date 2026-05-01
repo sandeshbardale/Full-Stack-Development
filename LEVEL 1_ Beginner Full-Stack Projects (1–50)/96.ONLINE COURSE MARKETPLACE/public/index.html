@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CourseHub - Online Learning Marketplace</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <i class="fas fa-graduation-cap"></i> CourseHub
+      </div>
+      <div class="nav-search">
+        <input type="text" id="searchInput" placeholder="Search courses...">
+        <button id="searchBtn"><i class="fas fa-search"></i></button>
+      </div>
+      <div class="nav-menu">
+        <select id="categoryFilter">
+          <option value="">All Categories</option>
+        </select>
+        <button class="cart-btn" id="cartBtn">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-content">
+      <h1>Learn Anything, Anytime</h1>
+      <p>Access 1000+ courses from expert instructors</p>
+      <div class="hero-stats">
+        <div class="stat"><strong>50K+</strong> Students</div>
+        <div class="stat"><strong>500+</strong> Courses</div>
+        <div class="stat"><strong>4.8★</strong> Rating</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <section class="courses-section">
+      <h2>Featured Courses</h2>
+      <div class="courses-grid" id="coursesGrid">
+      </div>
+    </section>
+  </div>
+
+  <div class="modal" id="courseModal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="modal-body">
+        <img id="modalImage" alt="Course">
+        <div class="modal-details">
+          <h2 id="modalTitle"></h2>
+          <div class="modal-meta">
+            <div><i class="fas fa-star"></i> <span id="modalRating"></span></div>
+            <div><i class="fas fa-users"></i> <span id="modalStudents"></span> students</div>
+            <div><i class="fas fa-clock"></i> <span id="modalDuration"></span></div>
+          </div>
+          <p id="modalInstructor"><strong>Instructor:</strong> </p>
+          <p id="modalCategory"><strong>Category:</strong> </p>
+          <p id="modalLevel"><strong>Level:</strong> </p>
+          <p id="modalDescription"></p>
+          <div class="modal-footer">
+            <div class="price" id="modalPrice"></div>
+            <button class="add-to-cart-btn" id="addToCartBtn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="cartModal">
+    <div class="modal-content cart-modal">
+      <span class="close">&times;</span>
+      <h2>Shopping Cart</h2>
+      <div class="cart-items" id="cartItems">
+      </div>
+      <div class="cart-summary">
+        <div class="summary-row">
+          <span>Subtotal:</span>
+          <span id="subtotal">$0.00</span>
+        </div>
+        <div class="summary-row">
+          <span>Discount (10%):</span>
+          <span id="discount">-$0.00</span>
+        </div>
+        <div class="summary-row total">
+          <span>Total:</span>
+          <span id="total">$0.00</span>
+        </div>
+        <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+        <button class="continue-btn" id="continueShoppingBtn">Continue Shopping</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="success-message" id="successMessage">
+    <i class="fas fa-check-circle"></i>
+    <div>
+      <strong id="successTitle">Order Placed!</strong>
+      <p id="successText">Your order has been confirmed.</p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>CourseHub</h4>
+        <p>The world's largest online learning marketplace</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Browse Courses</a></li>
+          <li><a href="#">Become Instructor</a></li>
+          <li><a href="#">Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 CourseHub. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+body {
+  font-family: Arial;
+  background: #f0f2f5;
+  margin:0;
+}
+.container {
+  width: 70%;
+  margin: 40px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+h1 {
+  text-align:center;
+}
+.form input, .form textarea {
+  width: 100%;
+  padding:10px;
+  margin-bottom:10px;
+  border:1px solid #ccc;
+  border-radius:5px;
+}
+.form button {
+  padding:10px 20px;
+  border:none;
+  background:#0077b6;
+  color:white;
+  border-radius:5px;
+  cursor:pointer;
+}
+.post {
+  background:#f8f9fa;
+  padding:15px;
+  border-radius:5px;
+  margin-bottom:15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.post h2 {
+  margin:0 0 10px;
+}
+.post button {
+  background:red;
+  color:white;
+  border:none;
+  padding:5px 10px;
+  border-radius:5px;
+  cursor:pointer;
+}

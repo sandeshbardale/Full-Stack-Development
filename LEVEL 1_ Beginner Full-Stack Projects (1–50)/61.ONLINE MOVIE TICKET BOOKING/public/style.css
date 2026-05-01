@@ -1,0 +1,71 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: linear-gradient(120deg, #1f1c2c, #928dab);
+    color: white;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.movies {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.movie {
+    background: rgba(255,255,255,0.1);
+    padding: 15px;
+    border-radius: 10px;
+    width: 150px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.movie:hover {
+    transform: scale(1.1);
+    background: rgba(255,255,255,0.2);
+}
+
+.selected {
+    border: 2px solid #00ffcc;
+}
+
+.form {
+    margin-top: 20px;
+}
+
+input {
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background: #00ffcc;
+    color: black;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #00ccaa;
+}
+
+#bookings {
+    margin-top: 20px;
+}

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Exam Proctoring System</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="background-animation"></div>
+  
+  <div id="loginContainer" class="container login-container">
+    <div class="login-card">
+      <div class="logo-section">
+        <i class="fas fa-graduation-cap"></i>
+        <h1>Exam Proctor</h1>
+      </div>
+      
+      <form id="loginForm">
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" id="studentName" placeholder="Full Name" required>
+        </div>
+        
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" id="studentEmail" placeholder="Email Address" required>
+        </div>
+        
+        <div class="input-group">
+          <i class="fas fa-book"></i>
+          <input type="text" id="examTitle" placeholder="Exam Title" required>
+        </div>
+        
+        <div class="input-group">
+          <i class="fas fa-hourglass-start"></i>
+          <input type="number" id="duration" placeholder="Duration (minutes)" min="15" max="240" required>
+        </div>
+        
+        <div class="checkbox-group">
+          <input type="checkbox" id="webcamEnabled">
+          <label for="webcamEnabled"><i class="fas fa-video"></i> Enable Webcam</label>
+        </div>
+        
+        <button type="submit" class="btn-primary">
+          <i class="fas fa-play"></i> Start Exam
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div id="examContainer" class="exam-container hidden">
+    <div class="exam-header">
+      <div class="exam-info">
+        <h2 id="examTitle"></h2>
+        <p id="studentInfo"></p>
+      </div>
+      
+      <div class="exam-controls">
+        <div class="timer">
+          <i class="fas fa-clock"></i>
+          <span id="timeRemaining">00:00</span>
+        </div>
+        
+        <div class="status-badges">
+          <span id="webcamStatus" class="badge webcam-off">
+            <i class="fas fa-video-slash"></i> Webcam Off
+          </span>
+          <span class="badge connection-ok">
+            <i class="fas fa-wifi"></i> Connected
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exam-content">
+      <div class="questions-panel">
+        <h3>Questions</h3>
+        <div id="questionsList" class="questions-list">
+        </div>
+      </div>
+
+      <div class="main-exam-area">
+        <div id="questionContainer" class="question-container">
+          <div id="questionDisplay"></div>
+          
+          <div id="answersContainer" class="answers-container">
+          </div>
+          
+          <div class="question-actions">
+            <button id="previousBtn" class="btn-secondary">
+              <i class="fas fa-chevron-left"></i> Previous
+            </button>
+            <button id="flagBtn" class="btn-warning">
+              <i class="fas fa-flag"></i> Flag Question
+            </button>
+            <button id="nextBtn" class="btn-secondary">
+              <i class="fas fa-chevron-right"></i> Next
+            </button>
+          </div>
+        </div>
+
+        <div class="monitoring-panel">
+          <div class="monitoring-item">
+            <i class="fas fa-shield-alt"></i>
+            <h4>Proctoring Active</h4>
+            <p>Your exam is being monitored</p>
+          </div>
+          
+          <div class="monitoring-item">
+            <i class="fas fa-camera"></i>
+            <h4>Webcam</h4>
+            <div id="webcamPreview" class="webcam-preview">
+              <i class="fas fa-video-slash"></i>
+            </div>
+          </div>
+          
+          <div class="monitoring-item">
+            <i class="fas fa-list-check"></i>
+            <h4>Activity Log</h4>
+            <div id="activityLog" class="activity-log">
+              <p>Exam started</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exam-footer">
+      <button id="submitExamBtn" class="btn-submit">
+        <i class="fas fa-check"></i> Submit Exam
+      </button>
+    </div>
+  </div>
+
+  <div id="resultContainer" class="container result-container hidden">
+    <div class="result-card">
+      <div class="result-header">
+        <i class="fas fa-trophy"></i>
+        <h2>Exam Completed!</h2>
+      </div>
+      
+      <div class="result-content">
+        <div class="score-circle">
+          <div class="score-number" id="scorePercentage">0%</div>
+          <div class="score-label">Score</div>
+        </div>
+        
+        <div class="result-details">
+          <div class="detail-item">
+            <span class="detail-label">Total Questions:</span>
+            <span id="totalQuestions" class="detail-value">0</span>
+          </div>
+          <<div class="detail-item">
+            <span class="detail-label">Correct Answers:</span>
+            <span id="correctAnswers" class="detail-value">0</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Accuracy:</span>
+            <span id="accuracy" class="detail-value">0%</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Flags:</span>
+            <span id="flagsCount" class="detail-value">0</span>
+          </div>
+        </div>
+      </div>
+      
+      <button id="retakeBtn" class="btn-primary" style="width: 100%; margin-top: 20px;">
+        <i class="fas fa-redo"></i> Take Another Exam
+      </button>
+    </div>
+  </div>
+
+  <div id="warningModal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <i class="fas fa-exclamation-triangle"></i>
+        <h3>Warning</h3>
+      </div>
+      <p id="warningMessage"></p>
+      <button id="warningOkBtn" class="btn-primary">Understood</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

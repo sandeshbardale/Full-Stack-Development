@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CharityFlow - Make a Difference Today</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="stars"></div>
+
+  <header class="navbar">
+    <div class="container">
+      <div class="logo">
+        <span class="logo-icon">💝</span>
+        <span class="logo-text">CharityFlow</span>
+      </div>
+      <nav class="nav-menu">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#causes" class="nav-link">Causes</a>
+        <a href="#donate" class="nav-link">Donate</a>
+        <a href="#impact" class="nav-link">Impact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Make a Difference Today</h1>
+      <p class="hero-subtitle">Join thousands of donors supporting meaningful causes around the world</p>
+      <a href="#donate" class="btn btn-primary btn-lg">Start Donating</a>
+    </div>
+    <div class="hero-animation">
+      <div class="floating-card card-1">🏥</div>
+      <div class="floating-card card-2">📚</div>
+      <div class="floating-card card-3">🌍</div>
+    </div>
+  </section>
+
+  <section id="causes" class="causes-section">
+    <div class="container">
+      <h2 class="section-title">Choose Your Cause</h2>
+      <div class="causes-grid" id="causesGrid"></div>
+    </div>
+  </section>
+
+  <section id="donate" class="donate-section">
+    <div class="container">
+      <div class="donate-container">
+        <div class="donate-form-wrapper">
+          <h2 class="section-title">Make Your Donation</h2>
+          
+          <form class="donate-form" id="donationForm">
+            <div class="form-group">
+              <label for="cause">Select Cause</label>
+              <select id="cause" required>
+                <option value="">Choose a cause...</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="amount">Donation Amount ($)</label>
+              <div class="amount-input-wrapper">
+                <input type="number" id="amount" min="1" step="0.01" placeholder="Enter amount" required>
+                <div class="quick-amounts">
+                  <button type="button" class="quick-btn" data-amount="10">$10</button>
+                  <button type="button" class="quick-btn" data-amount="25">$25</button>
+                  <button type="button" class="quick-btn" data-amount="50">$50</button>
+                  <button type="button" class="quick-btn" data-amount="100">$100</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="Your name" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="your@email.com" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message (Optional)</label>
+              <textarea id="message" placeholder="Share why this cause matters to you..." rows="4"></textarea>
+            </div>
+
+            <div class="donation-summary">
+              <div class="summary-item">
+                <span>Donation Amount:</span>
+                <span class="summary-value">$<span id="summaryAmount">0</span></span>
+              </div>
+              <div class="summary-item highlight">
+                <span>Total to Donate:</span>
+                <span class="summary-value">$<span id="summaryTotal">0</span></span>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full">Complete Donation</button>
+            <p class="form-note">💳 Secure payment processing • 🔒 Your data is encrypted</p>
+          </form>
+        </div>
+
+        <div class="donate-stats-wrapper">
+          <div class="stats-container">
+            <h3>Our Impact</h3>
+            <div class="stat-card">
+              <div class="stat-icon">💰</div>
+              <div class="stat-value" id="totalRaised">$0</div>
+              <div class="stat-label">Total Raised</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">👥</div>
+              <div class="stat-value" id="donorCount">0</div>
+              <div class="stat-label">Donors</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">📊</div>
+              <div class="stat-value">$<span id="avgDonation">0</span></div>
+              <div class="stat-label">Avg Donation</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">🏆</div>
+              <div class="stat-value">$<span id="maxDonation">0</span></div>
+              <div class="stat-label">Largest Gift</div>
+            </div>
+          </div>
+
+          <div class="recent-donations">
+            <h4>Recent Donations</h4>
+            <div id="recentDonationsList" class="donations-list"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <section id="impact" class="impact-section">
+    <div class="container">
+      <h2 class="section-title">Your Impact Matters</h2>
+      <div class="impact-grid">
+        <div class="impact-card">
+          <div class="impact-number">10M+</div>
+          <div class="impact-text">Lives Touched</div>
+        </div>
+        <div class="impact-card">
+          <div class="impact-number">150+</div>
+          <div class="impact-text">Countries</div>
+        </div>
+        <div class="impact-card">
+          <div class="impact-number">25+</div>
+          <div class="impact-text">Years of Service</div>
+        </div>
+        <div class="impact-card">
+          <div class="impact-number">98%</div>
+          <div class="impact-text">Fund Efficiency</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="successModal" class="modal">
+    <div class="modal-content success-modal">
+      <div class="modal-icon">✓</div>
+      <h2>Thank You!</h2>
+      <p id="modalMessage">Your donation has been received successfully.</p>
+      <div id="modalDonationDetails" class="donation-details"></div>
+      <button class="btn btn-primary" onclick="closeModal()">Done</button>
+    </div>
+  </div>
+
+  <div id="errorModal" class="modal">
+    <div class="modal-content error-modal">
+      <div class="modal-icon error">✕</div>
+      <h2>Oops!</h2>
+      <p id="errorMessage">Something went wrong. Please try again.</p>
+      <button class="btn btn-primary" onclick="closeErrorModal()">Try Again</button>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 CharityFlow. All donations go directly to the causes. | Privacy Policy | Terms & Conditions</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

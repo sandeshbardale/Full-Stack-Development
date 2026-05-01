@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MarketHub - Online Marketplace</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <i class="fas fa-store"></i> MarketHub
+      </div>
+      <div class="nav-links">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Search products...">
+          <button id="searchBtn"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="nav-buttons">
+          <button id="cartBtn" class="cart-btn">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span>
+          </button>
+          <div class="user-menu">
+            <button id="userBtn" class="user-btn">
+              <i class="fas fa-user"></i>
+            </button>
+            <div id="userDropdown" class="dropdown-menu">
+              <a href="#" onclick="goToBuyerDash()" id="buyerDashLink">Buyer Dashboard</a>
+              <a href="#" onclick="goToSellerDash()" id="sellerDashLink">Seller Dashboard</a>
+              <a href="#" onclick="goToOrders()">My Orders</a>
+              <hr>
+              <a href="#" onclick="logout()">Logout</a>
+            </div>
+          </div>
+          <button id="loginBtn" class="login-btn">Login</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeLoginModal()">&times;</span>
+      <div class="login-container">
+        <div class="login-tabs">
+          <button class="tab-btn active" data-tab="buyer">
+            <i class="fas fa-shopping-bag"></i> Buyer
+          </button>
+          <button class="tab-btn" data-tab="seller">
+            <i class="fas fa-store"></i> Seller
+          </button>
+        </div>
+        
+        <form id="loginForm" class="login-form">
+          <h2 id="loginTitle">Login as Buyer</h2>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="loginEmail" required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="loginPassword" required>
+          </div>
+          <input type="hidden" id="userType" value="buyer">
+          <button type="submit" class="btn-primary">Login</button>
+          <p class="login-hint" id="loginHint">Demo: buyer@example.com / pass123</p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="cartModal" class="modal">
+    <div class="modal-content cart-modal">
+      <span class="close" onclick="closeCartModal()">&times;</span>
+      <h2>Shopping Cart</h2>
+      <div id="cartItems"></div>
+      <div class="cart-summary">
+        <div class="summary-row">
+          <span>Subtotal:</span>
+          <span id="subtotal">$0.00</span>
+        </div>
+        <div class="summary-row">
+          <span>Shipping:</span>
+          <span>$10.00</span>
+        </div>
+        <div class="summary-row total">
+          <span>Total:</span>
+          <span id="cartTotal">$10.00</span>
+        </div>
+      </div>
+      <button class="btn-primary full-width" onclick="checkout()">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <main class="main-content">
+    <section id="homeSection" class="section active">
+      <div class="hero">
+        <div class="hero-content">
+          <h1>Welcome to MarketHub</h1>
+          <p>Your one-stop marketplace for amazing products</p>
+          <div class="hero-filters">
+            <select id="categoryFilter">
+              <option value="All">All Categories</option>
+              <option value="Electronics">Electronics</option>
+              <option value="Accessories">Accessories</option>
+            </select>
+            <input type="range" id="priceFilter" min="0" max="500" value="500">
+            <span id="priceDisplay">Max: $500</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="products-section">
+        <h2>Featured Products</h2>
+        <div id="productsList" class="products-grid"></div>
+      </div>
+    </section>
+
+    <section id="buyerDashSection" class="section">
+      <div class="dashboard-container">
+        <h1>Buyer Dashboard</h1>
+        <div class="dashboard-cards">
+          <div class="card">
+            <i class="fas fa-box"></i>
+            <h3>Total Orders</h3>
+            <p id="totalOrders">0</p>
+          </div>
+          <div class="card">
+            <i class="fas fa-shopping-cart"></i>
+            <h3>Cart Items</h3>
+            <p id="cartItemsCount">0</p>
+          </div>
+          <div class="card">
+            <i class="fas fa-dollar-sign"></i>
+            <h3>Total Spent</h3>
+            <p id="totalSpent">$0.00</p>
+          </div>
+        </div>
+        <div class="recent-orders">
+          <h3>Recent Orders</h3>
+          <div id="ordersList" class="orders-list"></div>
+        </div>
+        <button class="btn-primary" onclick="goToHome()">Continue Shopping</button>
+      </div>
+    </section>
+
+    <section id="sellerDashSection" class="section">
+      <div class="dashboard-container">
+        <h1>Seller Dashboard</h1>
+        <button class="btn-primary" onclick="showAddProductForm()">+ Add New Product</button>
+        
+        <div id="addProductForm" class="form-container" style="display: none;">
+          <h3>Add New Product</h3>
+          <form onsubmit="addProduct(event)">
+            <div class="form-group">
+              <label>Product Name</label>
+              <input type="text" id="productName" required>
+            </div>
+            <div class="form-group">
+              <label>Price</label>
+              <input type="number" id="productPrice" step="0.01" required>
+            </div>
+            <div class="form-group">
+              <label>Category</label>
+              <select id="productCategory" required>
+                <option value="Electronics">Electronics</option>
+                <option value="Accessories">Accessories</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Image URL</label>
+              <input type="url" id="productImage" required>
+            </div>
+            <button type="submit" class="btn-primary">Add Product</button>
+            <button type="button" class="btn-secondary" onclick="hideAddProductForm()">Cancel</button>
+          </form>
+        </div>
+
+        <div class="seller-products">
+          <h3>My Products</h3>
+          <div id="sellerProductsList" class="products-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ordersSection" class="section">
+      <div class="dashboard-container">
+        <h1>My Orders</h1>
+        <div id="allOrdersList" class="orders-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About Us</h4>
+        <p>MarketHub is your trusted online marketplace connecting buyers and sellers worldwide.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">Seller Portal</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 MarketHub. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreelanceHub - Marketplace</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">💼</span>
+                <span class="logo-text">FreelanceHub</span>
+            </div>
+            <div class="nav-links">
+                <button class="nav-btn active" data-section="home">Home</button>
+                <button class="nav-btn" data-section="projects">Projects</button>
+                <button class="nav-btn" data-section="freelancers">Freelancers</button>
+                <button class="nav-btn" data-section="post">Post Project</button>
+            </div>
+            <div class="auth-buttons">
+                <button class="btn-secondary">Login</button>
+                <button class="btn-primary">Sign Up</button>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="section active">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Find Talented Freelancers</h1>
+                <p>Connect with top professionals for your next project</p>
+                <div class="hero-search">
+                    <input type="text" placeholder="Search projects, skills...">
+                    <button class="btn-primary">Search</button>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">1,200+</div>
+                    <div class="stat-label">Active Projects</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">850+</div>
+                    <div class="stat-label">Skilled Freelancers</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">$2.5M+</div>
+                    <div class="stat-label">Jobs Completed</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="section-header">
+            <h2>Available Projects</h2>
+            <div class="filter-btns">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="Web Design">Web Design</button>
+                <button class="filter-btn" data-filter="UI/UX">UI/UX</button>
+                <button class="filter-btn" data-filter="Backend">Backend</button>
+                <button class="filter-btn" data-filter="Marketing">Marketing</button>
+            </div>
+        </div>
+        <div class="projects-grid" id="projectsGrid"></div>
+    </section>
+
+    <section id="freelancers" class="section">
+        <div class="section-header">
+            <h2>Top Freelancers</h2>
+        </div>
+        <div class="freelancers-grid" id="freelancersGrid"></div>
+    </section>
+
+    <section id="post" class="section">
+        <div class="form-container">
+            <h2>Post Your Project</h2>
+            <form id="projectForm" class="project-form">
+                <div class="form-group">
+                    <label>Project Title</label>
+                    <input type="text" required placeholder="Enter project title">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select required>
+                            <option>Web Design</option>
+                            <option>UI/UX</option>
+                            <option>Backend</option>
+                            <option>Marketing</option>
+                            <option>Branding</option>
+                            <option>Writing</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Budget ($)</label>
+                        <input type="number" required placeholder="Enter budget">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea required placeholder="Describe your project in detail" rows="5"></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Post Project</button>
+            </form>
+        </div>
+    </section>
+
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalBody"></div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal()">Close</button>
+                <button class="btn-primary">Send Proposal</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="freelancerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="freelancerModalBody"></div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeFreelancerModal()">Close</button>
+                <button class="btn-primary">Hire Now</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

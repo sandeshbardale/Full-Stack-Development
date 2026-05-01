@@ -1,0 +1,21 @@
+{
+  "name": "bug-tracker-pro",
+  "version": "1.0.0",
+  "description": "An attractive online bug tracking system",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "bug",
+    "tracker",
+    "system"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^4.22.1"
+  }
+}

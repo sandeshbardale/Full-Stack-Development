@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College ERP System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="nav-brand">🎓 College ERP</div>
+            <ul class="nav-menu">
+                <li><a href="#" data-tab="dashboard" class="active">Dashboard</a></li>
+                <li><a href="#" data-tab="students">Students</a></li>
+                <li><a href="#" data-tab="courses">Courses</a></li>
+                <li><a href="#" data-tab="grades">Grades</a></li>
+                <li><a href="#" data-tab="attendance">Attendance</a></li>
+            </ul>
+        </nav>
+
+        <div class="content">
+            <div id="dashboard" class="tab-content active">
+                <div class="dashboard-header">
+                    <h1>Welcome to College ERP System</h1>
+                    <p>Manage your college operations efficiently</p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="studentCount">0</div>
+                        <div class="stat-label">Total Students</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="courseCount">0</div>
+                        <div class="stat-label">Active Courses</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="avgGrade">0.0</div>
+                        <div class="stat-label">Avg Grade</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="attendanceRate">0%</div>
+                        <div class="stat-label">Attendance Rate</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="students" class="tab-content">
+                <div class="section-header">
+                    <h2>Student Management</h2>
+                    <button class="btn-primary" onclick="toggleForm('studentForm')">+ Add Student</button>
+                </div>
+                
+                <form id="studentForm" class="form-container" style="display: none;">
+                    <h3>Add New Student</h3>
+                    <input type="text" id="studentName" placeholder="Full Name" required>
+                    <input type="email" id="studentEmail" placeholder="Email" required>
+                    <input type="text" id="studentRoll" placeholder="Roll Number" required>
+                    <select id="studentDept">
+                        <option value="">Select Department</option>
+                        <option value="CSE">Computer Science</option>
+                        <option value="ECE">Electronics</option>
+                        <option value="MECH">Mechanical</option>
+                        <option value="CIVIL">Civil</option>
+                    </select>
+                    <button type="button" class="btn-primary" onclick="addStudent()">Add Student</button>
+                </form>
+
+                <div id="studentsList" class="list-container"></div>
+            </div>
+
+            <div id="courses" class="tab-content">
+                <div class="section-header">
+                    <h2>Course Management</h2>
+                    <button class="btn-primary" onclick="toggleForm('courseForm')">+ Add Course</button>
+                </div>
+
+                <form id="courseForm" class="form-container" style="display: none;">
+                    <h3>Add New Course</h3>
+                    <input type="text" id="courseName" placeholder="Course Name" required>
+                    <input type="text" id="courseCode" placeholder="Course Code" required>
+                    <input type="number" id="courseCredits" placeholder="Credits" min="1" max="4" required>
+                    <input type="text" id="courseFaculty" placeholder="Faculty Name" required>
+                    <button type="button" class="btn-primary" onclick="addCourse()">Add Course</button>
+                </form>
+
+                <div id="coursesList" class="list-container"></div>
+            </div>
+
+            <div id="grades" class="tab-content">
+                <div class="section-header">
+                    <h2>Grade Management</h2>
+                    <button class="btn-primary" onclick="toggleForm('gradeForm')">+ Add Grade</button>
+                </div>
+
+                <form id="gradeForm" class="form-container" style="display: none;">
+                    <h3>Add Grade</h3>
+                    <select id="gradeStudent">
+                        <option value="">Select Student</option>
+                    </select>
+                    <select id="gradeCourse">
+                        <option value="">Select Course</option>
+                    </select>
+                    <input type="number" id="gradeScore" placeholder="Score (0-100)" min="0" max="100" required>
+                    <button type="button" class="btn-primary" onclick="addGrade()">Add Grade</button>
+                </form>
+
+                <div id="gradesList" class="list-container"></div>
+            </div>
+
+            <div id="attendance" class="tab-content">
+                <div class="section-header">
+                    <h2>Attendance Management</h2>
+                    <button class="btn-primary" onclick="toggleForm('attendanceForm')">+ Mark Attendance</button>
+                </div>
+
+                <form id="attendanceForm" class="form-container" style="display: none;">
+                    <h3>Mark Attendance</h3>
+                    <select id="attendanceStudent">
+                        <option value="">Select Student</option>
+                    </select>
+                    <input type="date" id="attendanceDate" required>
+                    <select id="attendanceStatus">
+                        <option value="Present">Present</option>
+                        <option value="Absent">Absent</option>
+                        <option value="Late">Late</option>
+                        <option value="Leave">Leave</option>
+                    </select>
+                    <button type="button" class="btn-primary" onclick="markAttendance()">Mark Attendance</button>
+                </form>
+
+                <div id="attendanceList" class="list-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

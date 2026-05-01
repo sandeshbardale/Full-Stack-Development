@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Voting Portal with Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">🗳️ VoteHub</div>
+                <div class="nav-items">
+                    <button class="nav-btn active" data-tab="voter">Voter</button>
+                    <button class="nav-btn" data-tab="admin">Admin</button>
+                    <button class="nav-btn logout-btn" id="logoutBtn">Logout</button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="main-container">
+            <div id="voter-section" class="section active">
+                <div class="container">
+                    <div class="voter-header">
+                        <h1>Welcome to Online Voting Portal</h1>
+                        <p>Cast your vote securely and make your voice heard</p>
+                    </div>
+
+                    <div class="voter-content">
+                        <div class="login-box" id="voterLogin">
+                            <h2>Voter Login</h2>
+                            <form id="voterLoginForm">
+                                <div class="form-group">
+                                    <label>Voter ID</label>
+                                    <input type="text" id="voterId" placeholder="Enter your voter ID" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" id="voterPassword" placeholder="Enter password" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Login</button>
+                            </form>
+                        </div>
+
+                        <div class="voting-area" id="votingArea" style="display: none;">
+                            <h2>Active Polls</h2>
+                            <div id="pollsList" class="polls-container"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="admin-section" class="section">
+                <div class="container">
+                    <div class="admin-header">
+                        <h1>Admin Dashboard</h1>
+                        <p>Manage polls and view voting results</p>
+                    </div>
+
+                    <div class="admin-content">
+                        <div class="admin-login" id="adminLogin">
+                            <h2>Admin Login</h2>
+                            <form id="adminLoginForm">
+                                <div class="form-group">
+                                    <label>Admin ID</label>
+                                    <input type="text" id="adminId" placeholder="Enter admin ID" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" id="adminPassword" placeholder="Enter admin password" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Login</button>
+                            </form>
+                        </div>
+
+                        <div class="admin-dashboard" id="adminDashboard" style="display: none;">
+                            <div class="dashboard-grid">
+                                <div class="stats-section">
+                                    <div class="stat-card">
+                                        <div class="stat-number" id="totalVoters">0</div>
+                                        <div class="stat-label">Total Voters</div>
+                                    </div>
+                                    <div class="stat-card">
+                                        <div class="stat-number" id="totalVotes">0</div>
+                                        <div class="stat-label">Total Votes Cast</div>
+                                    </div>
+                                    <div class="stat-card">
+                                        <div class="stat-number" id="activePollsCount">0</div>
+                                        <div class="stat-label">Active Polls</div>
+                                    </div>
+                                </div>
+
+                                <div class="create-poll-section">
+                                    <h3>Create New Poll</h3>
+                                    <form id="createPollForm">
+                                        <div class="form-group">
+                                            <label>Poll Title</label>
+                                            <input type="text" id="pollTitle" placeholder="Enter poll title" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Poll Description</label>
+                                            <textarea id="pollDescription" placeholder="Enter poll description"></textarea>
+                                        </div>
+                                        <div id="optionsContainer">
+                                            <div class="form-group">
+                                                <label>Option 1</label>
+                                                <input type="text" class="poll-option" placeholder="Enter option 1" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Option 2</label>
+                                                <input type="text" class="poll-option" placeholder="Enter option 2" required>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-secondary" id="addOptionBtn">+ Add Option</button>
+                                        <button type="submit" class="btn btn-primary">Create Poll</button>
+                                    </form>
+                                </div>
+
+                                <div class="polls-management">
+                                    <h3>Manage Polls</h3>
+                                    <div id="adminPollsList" class="admin-polls-container"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pollModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
